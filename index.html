@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five Text Boxes</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #3367d6;
+    }
+
+    #message {
+      color: #d93025;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Enter the Five Values</h2>
+
+    <form id="myForm">
+      <input type="text" id="box1" placeholder="Text box 1" required>
+      <input type="text" id="box2" placeholder="Text box 2" required>
+      <input type="text" id="box3" placeholder="Text box 2.5" required>
+      <input type="text" id="box4" placeholder="Text box 3" required>
+      <input type="text" id="box5" placeholder="Final Text Box" required>
+
+      <button type="submit">Submit</button>
+      <p id="message"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const answers = ["https://docs.google.com/document/d/1zWGHoGtDPTmDCCNW9AVv8inl3WZmqPiTWaOBWNAElgk/edit?tab=t.0", "https://docs.google.com/document/d/1Bvz50JYQ2Geddcag-Mzf1NBfRDMnKGo5B_0XX6o1qoY/edit?tab=t.0", "https://docs.google.com/document/d/1eKuHvzTdOMC8db0446fE33AoSaNReIleLkmEDWvaK7Q/edit?tab=t.0", "https://docs.google.com/document/d/1GsOR3O3dY1Jj-ZeLE8suYxz8GQ3B5MovLrbPaxQzH9A/edit?tab=t.0", "https://docs.google.com/document/d/1JWyKKz9z9BTRoMzLQpMdQh_N--MLOJ34CUXJwxsq7jA/edit?tab=t.0"];
+
+      const correct = answers.every((answer, index) =>
+        document.getElementById("box" + (index + 1)).value.trim() === answer
+      );
+
+      if (correct) {
+        window.location.href = "https://docs.google.com/document/d/1Hl-ZIjdZvZWMdVI2oSKBT1R0jl-czi5dkE5txHlr58M/edit?usp=sharing";
+      } else {
+        document.getElementById("message").textContent =
+          "Incorrect values. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
